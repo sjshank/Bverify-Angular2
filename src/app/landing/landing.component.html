@@ -1,0 +1,43 @@
+<div class="jumbotron landing-top-jumbotron">
+    <h2>{{title}}</h2>
+    <hr>
+    <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <div class="jumbotron">
+                <div>
+                    <p>PRODUCER</p>
+                </div>
+                <ul>
+                    <li *ngFor="let link of producerLinks">
+                        <a [routerLink]="[link.path]">{{link.name}}</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <div class="jumbotron">
+                <div>
+                    <p>MANUFACTURER</p>
+                </div>
+                <ul>
+                    <li *ngFor="let link of manufactLinks">
+                        <a [routerLink]="[link.path]">{{link.name}}</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <div class="jumbotron">
+                <div>
+                    <p>RETAILER</p>
+                </div>
+                <ul>
+                    <li *ngFor="let link of retailLinks">
+                        <a [routerLink]="[link.path]">{{link.name}}</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
