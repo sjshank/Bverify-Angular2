@@ -7,7 +7,7 @@ import { PRODUCER_LINKS, MANUFACTURER_LINKS, RETAILER_LINKS  } from './landing.c
   styleUrls: ['./landing.component.less']
 })
 export class LandingComponent implements OnInit {
-  title:string="Landing Screen";
+  title:string="LANDING SCREEN";
   producerLinks = PRODUCER_LINKS;
   manufactLinks = MANUFACTURER_LINKS;
   retailLinks = RETAILER_LINKS;

@@ -1,12 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+
+import { PageHeaderModule } from '../shared/components/pageheader/pageheader.module';
 
 import { RegisterMaterialComponent } from './components/register/register.component';
 import { ProcureComponent } from './components/procure/procure.component';
 import { ShipComponent } from './components/ship/ship.component';
 import { MaterialShipmentComponent } from './components/shipment/shipment.component';
-
 
 @NgModule({
     declarations: [
@@ -18,13 +20,16 @@ import { MaterialShipmentComponent } from './components/shipment/shipment.compon
     imports: [
         BrowserModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        PageHeaderModule,
+        NgxDatatableModule
     ],
     exports: [
         RegisterMaterialComponent,
         ProcureComponent,
         ShipComponent,
         MaterialShipmentComponent
-    ]
+    ],
+    schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class MaterialModule { }

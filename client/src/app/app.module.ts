@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { RegisterModule } from './register/register.module';
 import { LoginModule } from './login/login.module';
 import { MaterialModule } from './material/material.module';
+import { LandingModule } from './landing/landing.module';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -15,7 +16,7 @@ import { LandingComponent } from './landing/landing.component';
 import { HomeComponent } from './home/home.component';
 
 import { AppRouter } from './config/app.routing';
-import { SidebarComponent } from './utils/components/sidebar/sidebar.component';
+import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
 
 
 @NgModule({
@@ -23,9 +24,7 @@ import { SidebarComponent } from './utils/components/sidebar/sidebar.component';
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    LandingComponent,
-    HomeComponent,
-    SidebarComponent
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +35,8 @@ import { SidebarComponent } from './utils/components/sidebar/sidebar.component';
     AppRouter,
     RegisterModule,
     LoginModule,
-    MaterialModule
+    MaterialModule, 
+    LandingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

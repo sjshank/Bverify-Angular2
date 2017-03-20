@@ -1,3 +1,46 @@
-<p>
-  register works!
-</p>
+<div class="jumbotron register-top-jumbotron">
+  <app-pageheader [header]="title"></app-pageheader>
+  <div class="row jumbotron">
+    <form novalidate [formGroup]='rForm' (submit)="registerMaterial(rForm.value)">
+      <!---->
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <div class="form-group">
+          <label>Material Name:</label>
+          <input class="form-control" type="text" placeholder="Enter material name" formControlName="mName">
+        </div>
+        <div class="form-group">
+          <label>Model Number:</label>
+          <input class="form-control" type="text" placeholder="Enter model number" formControlName="mNumber">
+        </div>
+        <div class="form-group">
+          <label>Date of Production:</label>
+          <input class="form-control" type="password" placeholder="Select date" formControlName="productionDate">
+        </div>
+      </div>
+      <!---->
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <div class="form-group">
+          <label>Weight (kg):</label>
+          <input class="form-control" type="text" placeholder="Enter material weight" formControlName="mWeight">
+        </div>
+        <div class="form-group">
+          <label>Color/Dimension (inches):</label>
+          <input class="form-control" type="text" placeholder="Enter color dimension" formControlName="mColor">
+        </div>
+        <div class="form-group">
+          <label>Image/Video (jpg,png,mp4):</label>
+          <input class="form-control" type="password" placeholder="Upload image video" formControlName="mFile">
+        </div>
+      </div>
+      <!---->
+      <div class="form-group register-btn-div">
+        <button type="submit" class="btn btn-primary" [disabled]="!rForm.valid">Register Material</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<ngx-datatable
+        [rows]="rows"
+        [columns]="columns">
+      </ngx-datatable>

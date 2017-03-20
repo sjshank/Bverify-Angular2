@@ -1,0 +1,11 @@
+.register-top-jumbotron {
+  background-image: linear-gradient(to bottom, #fff 0, #fff 100%);
+}
+.register-top-jumbotron .row {
+  padding-top: 20px;
+  background-image: linear-gradient(to bottom, #3c3c3c 0, #222 100%) !important;
+  color: #fff;
+}
+.register-top-jumbotron form .register-btn-div {
+  padding-left: 15px;
+}
