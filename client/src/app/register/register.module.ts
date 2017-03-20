@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { QRCodeModule } from 'angular2-qrcode';
 import {QRCodeComponent} from 'angular2-qrcode';
-import { AppQrCodeComponent } from '../utils/components/qrcode.component';
+import { AppQrCodeComponent } from '../utils/components/qrcode/qrcode.component';
 
 import { RegisterComponent } from './register.component';
 
