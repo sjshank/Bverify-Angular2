@@ -1,3 +1,46 @@
-<p>
-  register works!
-</p>
+<div class="jumbotron register-top-jumbotron">
+  <app-pageheader [header]="title"></app-pageheader>
+  <div class="row jumbotron">
+    <form novalidate [formGroup]='rForm' (submit)="registerProduct(rForm.value)">
+      <!---->
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <div class="form-group">
+          <label>Product Name:</label>
+          <input class="form-control" type="text" placeholder="Enter product name" formControlName="pName">
+        </div>
+        <div class="form-group">
+          <label>Model Number:</label>
+          <input class="form-control" type="text" placeholder="Enter model number" formControlName="pNumber">
+        </div>
+        <div class="form-group">
+          <label>Date of Manufacturing:</label>
+          <input class="form-control" type="password" placeholder="Select date" formControlName="manufacturingDate">
+        </div>
+      </div>
+      <!---->
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <div class="form-group">
+          <label>Weight (kg):</label>
+          <input class="form-control" type="text" placeholder="Enter product weight" formControlName="pWeight">
+        </div>
+        <div class="form-group">
+          <label>Color/Dimension (inches):</label>
+          <input class="form-control" type="text" placeholder="Enter color dimension" formControlName="pColor">
+        </div>
+        <div class="form-group">
+          <label>Image/Video (jpg,png,mp4):</label>
+          <input class="form-control" type="password" placeholder="Upload image video" formControlName="pFile">
+        </div>
+      </div>
+      <!---->
+      <div class="form-group register-btn-div">
+        <button type="submit" class="btn btn-primary" [disabled]="!rForm.valid">Register Product</button>
+      </div>
+    </form>
+  </div>
+</div>
+<!---->
+<div class="list-div jumbotron register-bottom-jumbotron">
+  <app-pageheader [header]="subTitle"></app-pageheader>
+  <ng2-smart-table [settings]="settings" [source]="data"></ng2-smart-table>
+</div>

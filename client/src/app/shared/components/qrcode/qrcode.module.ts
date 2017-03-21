@@ -1,23 +1,21 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AppQrCodeModule } from '../shared/components/qrcode/qrcode.module';
-
-import { RegisterComponent } from './register.component';
-
+import { AppQrCodeComponent } from './qrcode.component';
+import { QRCodeModule } from 'angular2-qrcode';
 
 @NgModule({
     declarations: [
-        RegisterComponent
-        ],
+        AppQrCodeComponent
+    ],
     imports: [
         BrowserModule,
         FormsModule,
-        ReactiveFormsModule,
-        AppQrCodeModule
+        ReactiveFormsModule
     ],
     exports: [
+        AppQrCodeComponent
     ],
     schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
-export class RegisterModule { }
+export class AppQrCodeModule { }

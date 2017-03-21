@@ -5,11 +5,8 @@
       <ng2-smart-table [settings]="settings" [source]="data"></ng2-smart-table>
     </div>
     <div class="form-group procure-btn-div">
-        <div id="procure" class="pull-left">
-          <button type="submit" class="btn btn-primary">Procure</button>
-        </div>
-        <div id="cancel">
-        <button type="reset" class="btn btn-primary">Cancel</button>
+        <div id="procure" >
+          <a role="button" [routerLink]="['/home']" class="btn btn-primary">Home</a>
         </div>
       </div>
   </div>

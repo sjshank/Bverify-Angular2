@@ -1,3 +1,17 @@
-<p>
-  procure works!
-</p>
+<div class="jumbotron procure-top-jumbotron">
+  <app-pageheader [header]="title"></app-pageheader>
+  <div class="row">
+    <div class="list-div">
+      <ng2-smart-table [settings]="settings" [source]="data"></ng2-smart-table>
+    </div>
+    <div class="form-group procure-btn-div">
+        <div id="procure" class="pull-left">
+          <button type="submit" class="btn btn-primary">Procure</button>
+        </div>
+        <div id="cancel">
+        <button type="reset" class="btn btn-primary">Cancel</button>
+        </div>
+      </div>
+  </div>
+</div>
+

@@ -1,23 +1,23 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AppQrCodeModule } from '../shared/components/qrcode/qrcode.module';
+import { FileuploadComponent } from './fileupload.component';
 
-import { RegisterComponent } from './register.component';
-
+import {FileUploadModule} from "ng2-file-upload/components/file-upload/file-upload.module";
 
 @NgModule({
     declarations: [
-        RegisterComponent
-        ],
+        FileuploadComponent,
+        FileUploadModule
+    ],
     imports: [
         BrowserModule,
         FormsModule,
-        ReactiveFormsModule,
-        AppQrCodeModule
+        ReactiveFormsModule
     ],
     exports: [
+        FileuploadComponent
     ],
     schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
-export class RegisterModule { }
+export class AppFileUploadModule { }

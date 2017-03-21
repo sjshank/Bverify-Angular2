@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-procure-material',
-  templateUrl: './procure.component.html',
-  styleUrls: ['./procure.component.less']
+  selector: 'app-acknowledge',
+  templateUrl: './acknowledge.component.html',
+  styleUrls: ['./acknowledge.component.less']
 })
-export class MaterialProcureComponent implements OnInit {
-  title: string = 'PROCURE MATERIALS';
+export class AcknowledgeComponent implements OnInit {
+  title: string = "ACKNOWLEDGED PRODUCTS";
+
   settings = {
     columns: {
       id: {
@@ -47,6 +48,7 @@ export class MaterialProcureComponent implements OnInit {
       email: "Rey.Padberg@rosamond.biz"
     }
   ];
+
   constructor() { }
 
   ngOnInit() {

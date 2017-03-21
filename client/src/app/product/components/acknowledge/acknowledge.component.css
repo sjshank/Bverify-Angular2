@@ -1,0 +1,15 @@
+.procure-top-jumbotron {
+  background-image: linear-gradient(to bottom, #fff 0, #fff 100%);
+}
+.procure-top-jumbotron .row {
+  border-radius: 5px;
+  padding-top: 20px;
+  background-image: linear-gradient(to bottom, #3c3c3c 0, #222 100%) !important;
+  color: #fff;
+}
+.procure-top-jumbotron .procure-btn-div {
+  padding-left: 48px;
+}
+.procure-top-jumbotron .procure-btn-div #procure {
+  padding-right: 15px;
+}

@@ -39,8 +39,8 @@
     </form>
   </div>
 </div>
-
-<ngx-datatable
-        [rows]="rows"
-        [columns]="columns">
-      </ngx-datatable>
+<!---->
+<div class="list-div jumbotron register-bottom-jumbotron">
+  <app-pageheader [header]="subTitle"></app-pageheader>
+  <ng2-smart-table [settings]="settings" [source]="data"></ng2-smart-table>
+</div>

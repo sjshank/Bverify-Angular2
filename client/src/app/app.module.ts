@@ -4,10 +4,12 @@ import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
+
 import { RegisterModule } from './register/register.module';
 import { LoginModule } from './login/login.module';
 import { MaterialModule } from './material/material.module';
 import { LandingModule } from './landing/landing.module';
+import { ProductModule } from './product/product.module';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -36,7 +38,8 @@ import { SidebarComponent } from './shared/components/sidebar/sidebar.component'
     RegisterModule,
     LoginModule,
     MaterialModule, 
-    LandingModule
+    LandingModule,
+    ProductModule
   ],
   providers: [],
   bootstrap: [AppComponent]
