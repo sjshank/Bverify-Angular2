@@ -1,6 +1,8 @@
 .register-top-jumbotron,
 .register-bottom-jumbotron {
   background-image: linear-gradient(to bottom, #fff 0, #fff 100%);
+  padding-top: 0px;
+  padding-bottom: 20px !important;
 }
 .register-top-jumbotron .row,
 .register-bottom-jumbotron .row {

@@ -1,0 +1,27 @@
+.landing-top-jumbotron {
+  background-image: linear-gradient(to bottom, #fff 0, #fff 100%);
+  padding-top: 0px;
+  padding-bottom: 20px !important;
+}
+.landing-top-jumbotron hr {
+  border-top: 1px solid #3c3c3c;
+}
+.landing-top-jumbotron .row {
+  padding-top: 20px;
+}
+.landing-top-jumbotron .row .jumbotron {
+  background-image: linear-gradient(to bottom, #3c3c3c 0, #222 100%);
+  color: #fff;
+  padding-top: 20px !important;
+  padding-bottom: 20px !important;
+  padding-left: 0px;
+  padding-right: 0px;
+  min-height: 225px;
+}
+.landing-top-jumbotron .row .jumbotron ul li {
+  padding-bottom: 10px;
+  font-size: 16px;
+}
+.landing-top-jumbotron .row .jumbotron div p {
+  padding-left: 25px;
+}

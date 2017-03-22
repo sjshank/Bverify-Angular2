@@ -4,6 +4,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 
 import { PageHeaderModule } from '../shared/components/pageheader/pageheader.module';
+import { AppFileUploadModule } from '../shared/components/fileupload/fileupload.module';
+import { SidebarModule } from '../shared/components/sidebar/sidebar.module';
 
 import { RegisterMaterialComponent } from './components/register/register.component';
 import { MaterialProcureComponent } from './components/procure/procure.component';
@@ -22,7 +24,9 @@ import { MaterialShipmentComponent } from './components/shipment/shipment.compon
         FormsModule,
         ReactiveFormsModule,
         PageHeaderModule,
-        Ng2SmartTableModule
+        Ng2SmartTableModule,
+        AppFileUploadModule,
+        SidebarModule
     ],
     exports: [
         RegisterMaterialComponent,

@@ -63,7 +63,7 @@ data = [
       'manufacturingDate': ['', Validators.required],
       'pWeight': ['', Validators.required],
       'pColor': ['', Validators.required],
-      'pFile': ['', Validators.required]
+      //'pFile': ['', Validators.required]
     });
   }
 

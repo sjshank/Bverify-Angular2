@@ -17,21 +17,23 @@ import { ProductProcureComponent } from '../product/components/procure/procure.c
 import { ProductShipmentComponent } from '../product/components/shipment/shipment.component';
 import { AcknowledgeComponent } from '../product/components/acknowledge/acknowledge.component';
 
+import { AppGuardService } from './app.guard';
+
 const appRoutes: Routes = [
     { path: 'home', component: HomeComponent },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
     { path: 'logout', component: LogoutComponent },
-    { path: 'landing', component: LandingComponent },
-    { path: 'material/register', component: RegisterMaterialComponent },
-    { path: 'material/ship', component: MaterialShipComponent },
-    { path: 'material/procure', component: MaterialProcureComponent },
-    { path: 'material/shipment', component: MaterialShipmentComponent },
-    { path: 'product/register', component: RegisterProductComponent },
-    { path: 'product/ship', component: ProductShipComponent },
-    { path: 'product/procure', component: ProductProcureComponent },
-    { path: 'product/acknowledged', component: AcknowledgeComponent },
-    { path: 'product/shipment', component: ProductShipmentComponent },
+    { path: 'landing', component: LandingComponent, canActivate: [AppGuardService] },
+    { path: 'material/register', component: RegisterMaterialComponent, canActivate: [AppGuardService]  },
+    { path: 'material/ship', component: MaterialShipComponent, canActivate: [AppGuardService]  },
+    { path: 'material/procure', component: MaterialProcureComponent, canActivate: [AppGuardService]  },
+    { path: 'material/shipment', component: MaterialShipmentComponent, canActivate: [AppGuardService]  },
+    { path: 'product/register', component: RegisterProductComponent, canActivate: [AppGuardService]  },
+    { path: 'product/ship', component: ProductShipComponent, canActivate: [AppGuardService]  },
+    { path: 'product/procure', component: ProductProcureComponent, canActivate: [AppGuardService]  },
+    { path: 'product/acknowledged', component: AcknowledgeComponent, canActivate: [AppGuardService]  },
+    { path: 'product/shipment', component: ProductShipmentComponent, canActivate: [AppGuardService]  },
     { path: '**', redirectTo: 'home' }
 ];
 

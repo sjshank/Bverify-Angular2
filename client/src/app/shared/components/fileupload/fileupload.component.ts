@@ -15,6 +15,6 @@ export class FileuploadComponent implements OnInit {
   }
 
   fileChange(event):void{
-    console.log(event);
+    this.uploader.queue[0].upload();
   }
 }

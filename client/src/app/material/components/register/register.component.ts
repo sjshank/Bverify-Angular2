@@ -64,7 +64,7 @@ export class RegisterMaterialComponent implements OnInit {
       'productionDate': ['', Validators.required],
       'mWeight': ['', Validators.required],
       'mColor': ['', Validators.required],
-      'mFile': ['', Validators.required]
+      //'mFile': ['', Validators.required]
     });
   }
 

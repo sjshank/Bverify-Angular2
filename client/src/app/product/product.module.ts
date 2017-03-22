@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 
 import { PageHeaderModule } from '../shared/components/pageheader/pageheader.module';
+import { AppFileUploadModule } from '../shared/components/fileupload/fileupload.module';
 
 import { RegisterProductComponent } from './components/register/register.component';
 import { ProductProcureComponent } from './components/procure/procure.component';
@@ -26,7 +27,8 @@ import { AcknowledgeComponent } from './components/acknowledge/acknowledge.compo
         ReactiveFormsModule,
         PageHeaderModule,
         Ng2SmartTableModule,
-        RouterModule
+        RouterModule,
+        AppFileUploadModule
     ],
     exports: [
         RegisterProductComponent,

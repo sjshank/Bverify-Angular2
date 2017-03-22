@@ -18,6 +18,7 @@ import { LandingComponent } from './landing/landing.component';
 import { HomeComponent } from './home/home.component';
 
 import { AppRouter } from './config/app.routing';
+import { AppGuardService } from './config/app.guard';
 import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
 
 
@@ -41,7 +42,7 @@ import { SidebarComponent } from './shared/components/sidebar/sidebar.component'
     LandingModule,
     ProductModule
   ],
-  providers: [],
+  providers: [AppGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

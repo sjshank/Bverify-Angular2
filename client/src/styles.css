@@ -39,6 +39,9 @@ body .spinner {
 body .loading {
   background-color: #d35400;
 }
+.app-wrapper {
+  margin-left: 0px !important;
+}
 .is-active {
   color: #fff !important;
 }
