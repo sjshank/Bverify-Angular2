@@ -13,15 +13,15 @@ import { APIURL } from '../../../config/app.constants';
 import { AppHttpService } from '../../../utils/http.service';
 
 @Injectable()
-export class MaterialRegisterService {
+export class MaterialShipService {
     private material: Object = null;
 
     constructor(private _httpService: AppHttpService, private _bverifyUtil: BverifyUtil) {
 
     }
 
-    register(material: Object): Observable<boolean> {
-        return this._httpService.post(`${APIURL.materialRegister}`, material)
+    ship(material: Object): Observable<boolean> {
+        return this._httpService.post(`${APIURL.materialShip}`, material)
             .map((response: Response) => {
                 let material = response.json() && response.json().user;
                 if (material){
@@ -35,7 +35,7 @@ export class MaterialRegisterService {
     };
 
     retrieve(id: string): Observable<boolean> {
-        return this._httpService.get(`${APIURL.retrieveMaterial}id`)
+        return this._httpService.get(`${APIURL.retrieveProduct}id`)
             .map((response: Response) => {
                 let material = response.json() && response.json().user;
                 if (material){
@@ -47,19 +47,5 @@ export class MaterialRegisterService {
             })
             .catch(this._bverifyUtil.handleError);
     };
-
-    list(): Observable<boolean> {
-        return this._httpService.get(`${APIURL.materialList}`)
-            .map((response: Response) => {
-                let material = response.json() && response.json().user;
-                if (material){
-                    this.material = material;
-                    return true;
-                }else{
-                    return false;
-                }            
-            })
-            .catch(this._bverifyUtil.handleError);
-    }
 
 }

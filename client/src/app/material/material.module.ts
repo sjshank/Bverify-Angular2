@@ -13,6 +13,7 @@ import { MaterialShipComponent } from './components/ship/ship.component';
 import { MaterialShipmentComponent } from './components/shipment/shipment.component';
 
 import { MaterialRegisterService } from './components/register/register.service';
+import { MaterialShipService } from './components/ship/ship.service';
 
 @NgModule({
     declarations: [
@@ -36,7 +37,7 @@ import { MaterialRegisterService } from './components/register/register.service'
         MaterialShipComponent,
         MaterialShipmentComponent
     ],
-    providers: [MaterialRegisterService],
-    schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
+    providers: [MaterialRegisterService, MaterialShipService],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class MaterialModule { }

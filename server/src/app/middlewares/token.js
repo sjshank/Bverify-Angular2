@@ -3,9 +3,9 @@ var log4js = require('log4js'),
 
 module.exports = function (req, res, next) {
     log.info("token ------------");
-    if (req.method === 'OPTIONS') {
+    /*if (req.method === 'OPTIONS') {
         next();
-    } else {
+    } else {*/
         var bearerToken = '';
         var bearerHeader = req.headers["authorization"];
         if (typeof bearerHeader !== 'undefined') {
@@ -16,5 +16,5 @@ module.exports = function (req, res, next) {
         } else {
             res.sendStatus(403).end();
         }
-    }
+    
 }

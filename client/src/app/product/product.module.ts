@@ -13,6 +13,9 @@ import { ProductShipComponent } from './components/ship/ship.component';
 import { ProductShipmentComponent } from './components/shipment/shipment.component';
 import { AcknowledgeComponent } from './components/acknowledge/acknowledge.component';
 
+import { ProductRegisterService } from './components/register/register.service';
+import { ProductShipService } from './components/ship/ship.service';
+
 @NgModule({
     declarations: [
         RegisterProductComponent,
@@ -36,6 +39,7 @@ import { AcknowledgeComponent } from './components/acknowledge/acknowledge.compo
         ProductShipComponent,
         ProductShipmentComponent
     ],
-    schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
+    providers: [ProductRegisterService, ProductShipService],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class ProductModule { }

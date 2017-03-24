@@ -26,7 +26,6 @@ export class LoginComponent implements OnInit {
   }
 
   doLogin(value): void {
-    console.log(value);
     this._loginService.loginUser(value)
       .takeWhile(() => this._alive)
       .subscribe(

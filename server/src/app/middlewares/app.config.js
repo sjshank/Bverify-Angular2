@@ -2,7 +2,9 @@ const bodyParser = require('body-parser'),
     morgan = require('morgan'),
     path = require("path"),
     log4js = require('log4js'),
-    db = require('./db');
+    db = require('./db'),
+    autoReap = require('multer-autoreap'),
+    cors = require('cors');
 var log = log4js.getLogger("appConfig");
 
 module.exports = function (express, app) {
@@ -19,14 +21,20 @@ module.exports = function (express, app) {
         next();
     });
 
-    var allowCrossDomain = function (req, res, next) {
+    /*var allowCrossDomain = function (req, res, next) {
         res.setHeader('Access-Control-Allow-Origin', '*');
         res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
         res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type, Authorization');
         next();
     }
 
-    app.use(allowCrossDomain);
+    app.use(allowCrossDomain);*/
+    app.use(autoReap);
+    //enable pre-flight.
+    app.options('*', cors());
+    //enable all cors request.
+    app.use(cors());
+
 
     if (app.get('env') === 'development') {
         app.use(function (err, req, res, next) {
