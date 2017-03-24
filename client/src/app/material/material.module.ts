@@ -12,6 +12,8 @@ import { MaterialProcureComponent } from './components/procure/procure.component
 import { MaterialShipComponent } from './components/ship/ship.component';
 import { MaterialShipmentComponent } from './components/shipment/shipment.component';
 
+import { MaterialRegisterService } from './components/register/register.service';
+
 @NgModule({
     declarations: [
         RegisterMaterialComponent,
@@ -34,6 +36,7 @@ import { MaterialShipmentComponent } from './components/shipment/shipment.compon
         MaterialShipComponent,
         MaterialShipmentComponent
     ],
+    providers: [MaterialRegisterService],
     schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class MaterialModule { }

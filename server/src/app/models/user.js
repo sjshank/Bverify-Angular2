@@ -1,4 +1,4 @@
-var db = require('../config/db'),
+var db = require('../middlewares/db'),
     Schema = db.Schema;
 
 var userModel = new Schema({

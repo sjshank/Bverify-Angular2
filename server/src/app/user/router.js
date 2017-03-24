@@ -1,4 +1,4 @@
-const router = require("../config/route-init"),
+const router = require("../middlewares/route-init"),
     loginController = require("./login.controller"),
     registerController = require("./register.controller"),
     log4js = require('log4js'),

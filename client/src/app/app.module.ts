@@ -1,8 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
-import { HttpModule } from '@angular/http';
-import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpModule, RequestOptions, XHRBackend } from '@angular/http';
+import { RouterModule, Router } from '@angular/router';
+import { AppHttpService } from './utils/http.service';
 
 
 import { RegisterModule } from './register/register.module';
@@ -38,11 +39,18 @@ import { SidebarComponent } from './shared/components/sidebar/sidebar.component'
     AppRouter,
     RegisterModule,
     LoginModule,
-    MaterialModule, 
+    MaterialModule,
     LandingModule,
     ProductModule
   ],
-  providers: [AppGuardService],
+  providers: [AppGuardService,
+    {
+      provide: AppHttpService,
+      useFactory: (backend: XHRBackend, options: RequestOptions, router: Router ) => {
+        return new AppHttpService(backend, options, router);
+      },
+      deps: [XHRBackend, RequestOptions]
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

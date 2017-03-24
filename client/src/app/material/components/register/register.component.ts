@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
+import { MaterialRegisterService } from './register.service';
+import "rxjs/add/operator/takeWhile";
+
 @Component({
   selector: 'app-register-material',
   templateUrl: './register.component.html',
@@ -11,6 +14,7 @@ export class RegisterMaterialComponent implements OnInit {
   title: string = 'REGISTER RAW MATERIAL';
   subTitle: string = 'REGISTERED MATERIALS'
   rForm: FormGroup;
+  private _alive = true;
 
   settings = {
     columns: {
@@ -55,7 +59,8 @@ export class RegisterMaterialComponent implements OnInit {
 
 
 
-  constructor(private _fb: FormBuilder, private _router: Router, private _activatedRoute: ActivatedRoute) { }
+  constructor(private _fb: FormBuilder, private _router: Router, private _activatedRoute: ActivatedRoute,
+    private _registerService: MaterialRegisterService) { }
 
   ngOnInit() {
     this.rForm = this._fb.group({
@@ -66,10 +71,26 @@ export class RegisterMaterialComponent implements OnInit {
       'mColor': ['', Validators.required],
       //'mFile': ['', Validators.required]
     });
-  }
+  };
 
   registerMaterial(value): void {
     console.log(value);
+    this._registerService.register(value)
+      .takeWhile(() => this._alive)
+      .subscribe(
+      data => {
+        console.log(data);
+      },
+      error => {
+        console.log("error", error);
+      }
+      )
+  };
+
+  ngOnDestroy() {
+    //Called once, before the instance is destroyed.
+    //Add 'implements OnDestroy' to the class.
+    this._alive = false;
   }
 
 }

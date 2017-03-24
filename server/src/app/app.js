@@ -1,10 +1,16 @@
 const express = require('express'),
     bodyParser = require('body-parser'),
     app = express(),
-    appConfig = require('./config/app.config')(express, app);
+    appConfig = require('./middlewares/app.config')(express, app);
 
 const server = require('../../server')(app);
 
-var userRoute = require("./user/router");
+var verifyToken = require("./middlewares/token")
 
-app.use('/api/user', userRoute);
+var userRouter = require("./user/router"),
+    materialRouter = require("./material/router");
+    productRouter = require("./product/router");
+
+app.use('/api/user', userRouter);
+app.use('/api/material', verifyToken, materialRouter);
+app.use('/api/product', verifyToken, productRouter);
