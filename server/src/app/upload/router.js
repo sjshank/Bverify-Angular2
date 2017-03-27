@@ -37,7 +37,7 @@ var s3 = new AWS.S3({
 });
 
 
-router.route('')
+router.route('/upload')
     .post(function (req, res) {
         log.info("upload route-----------");
         uploadController.uploadFile(req, res);

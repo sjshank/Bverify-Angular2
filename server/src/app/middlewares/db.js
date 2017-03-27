@@ -8,9 +8,12 @@ const mongoose = require('mongoose'),
         url = 'mongodb://127.0.0.1:27017/bverify',
         log4js = require('log4js'),
         debug = require('debug')('db'),
-        log = log4js.getLogger('db');
+        log = log4js.getLogger('db'),
+        autoIncrement = require('mongoose-auto-increment');
 
-mongoose.connect(url, _callback);
+var connection = mongoose.connect(url, _callback);
+
+autoIncrement.initialize(connection);
 
 function _callback(err){
     log.debug("Mongodb connection callback");

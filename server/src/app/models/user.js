@@ -1,11 +1,26 @@
 var db = require('../middlewares/db'),
-    Schema = db.Schema;
+    Schema = db.Schema,
+    autoIncrement = require('mongoose-auto-increment');
 
-var userModel = new Schema({
-    userName:{type:String},
-    password:{type:String}
+var userSchema = new Schema({
+    id: {
+        type: Number
+    },
+    userName: {
+        type: String
+    },
+    password: {
+        type: String
+    }
 });
 
-var user = db.model('userModel', userModel);
+userSchema.plugin(autoIncrement.plugin, {
+    model: 'User',
+    field: 'id',
+    startAt: 1,
+    incrementBy: 1
+});
 
-module.exports = user;
+var User = db.model('User', userSchema);
+
+module.exports = User;

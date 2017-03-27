@@ -14,7 +14,7 @@
         </div>
         <div class="form-group">
           <label>Date of Production:</label>
-          <input class="form-control" type="password" placeholder="Select date" formControlName="productionDate">
+          <input class="form-control" type="text" placeholder="Select date" formControlName="productionDate">
         </div>
       </div>
       <!---->
@@ -42,5 +42,5 @@
 <!---->
 <div class="list-div jumbotron register-bottom-jumbotron">
   <app-pageheader [header]="subTitle"></app-pageheader>
-  <ng2-smart-table [settings]="settings" [source]="data"></ng2-smart-table>
+  <ng2-smart-table [settings]="settings" [source]="list"></ng2-smart-table>
 </div>

@@ -15,48 +15,21 @@ export class RegisterMaterialComponent implements OnInit {
   subTitle: string = 'REGISTERED MATERIALS'
   rForm: FormGroup;
   private _alive = true;
+  list : any;
 
   settings = {
     columns: {
-      id: {
-        title: 'ID'
+      mName: {
+        title: 'Material Name'
       },
-      name: {
-        title: 'Full Name'
+      mWeight: {
+        title: 'Weight'
       },
-      username: {
-        title: 'User Name'
-      },
-      email: {
-        title: 'Email'
+      productionDate: {
+        title: 'Production Date'
       }
     }
   };
-
-  data = [
-    {
-      id: 1,
-      name: "Leanne Graham",
-      username: "Bret",
-      email: "Sincere@april.biz"
-    },
-    {
-      id: 2,
-      name: "Ervin Howell",
-      username: "Antonette",
-      email: "Shanna@melissa.tv"
-    },
-
-    // ... list of items
-
-    {
-      id: 11,
-      name: "Nicholas DuBuque",
-      username: "Nicholas.Stanton",
-      email: "Rey.Padberg@rosamond.biz"
-    }
-  ];
-
 
 
   constructor(private _fb: FormBuilder, private _router: Router, private _activatedRoute: ActivatedRoute,
@@ -71,11 +44,24 @@ export class RegisterMaterialComponent implements OnInit {
       'mColor': ['', Validators.required],
       //'mFile': ['', Validators.required]
     });
+    this._getMaterialList();
   };
 
   registerMaterial(value): void {
-    console.log(value);
     this._registerService.register(value)
+      .takeWhile(() => this._alive)
+      .subscribe(
+      data => {
+        console.log(data);
+      },
+      error => {
+        console.log("error", error);
+      }
+      )
+  };
+
+  private _getMaterialList(): void {
+    this._registerService.list()
       .takeWhile(() => this._alive)
       .subscribe(
       data => {

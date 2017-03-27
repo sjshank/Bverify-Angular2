@@ -3,16 +3,13 @@ const express = require('express'),
     app = express(),
     appConfig = require('./middlewares/app.config')(express, app);
 
-const server = require('../../server')(app);
+const server = require('./server')(app);
 
-var verifyToken = require("./middlewares/token")
+var verifyToken = require("./middlewares/token");
 
-var userRouter = require("./user/router"),
-    materialRouter = require("./material/router"),
-    productRouter = require("./product/router"),
-    uploadRouter = require("./upload/router");
+var userRouter = require("./user/router");
+var materialRouter = require("./material/router");
+var productRouter = require("./product/router");
+var uploadRouter = require("./upload/router");
 
-app.use('/api/user', userRouter);
-app.use('/api/material', verifyToken, materialRouter);
-app.use('/api/product', verifyToken, productRouter);
-app.use('/api/upload', verifyToken, uploadRouter);
+app.use('/api', verifyToken, [materialRouter, productRouter, uploadRouter, userRouter]);

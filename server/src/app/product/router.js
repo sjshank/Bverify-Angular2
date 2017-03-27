@@ -10,19 +10,19 @@ router.route('')
         registerController.getProduct(req, res);
     })
 
-router.route('/list')
+router.route('/product/list')
     .get(function (req, res) {
         log.info("product route-----------");
         registerController.getProductList(req, res);
     })
 
-router.route('/register')
+router.route('/product/register')
     .post(function (req, res) {
         log.info("product route-----------");
         registerController.registerProduct(req, res);
     })
 
-router.route('/ship')
+router.route('/product/ship')
     .post(function (req, res) {
         log.info("product route-----------");
         shipController.shipProduct(req, res);

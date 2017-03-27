@@ -1,16 +1,16 @@
-const router = require("../middlewares/route-init"),
+var router = require("../middlewares/route-init"),
     loginController = require("./login.controller"),
     registerController = require("./register.controller"),
     log4js = require('log4js'),
     log = log4js.getLogger('router');
 
-router.route('/login')
+router.route('/user/login')
     .post(function (req, res) {
         log.info("login route-----------");
         loginController.authenticateUser(req, res);
     });
 
-router.route('/register')
+router.route('/user/register')
     .post(function (req, res) {
         log.info("register route-----------");
         registerController.registerUser(req, res);
