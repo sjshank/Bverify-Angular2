@@ -49,7 +49,7 @@ import { SidebarComponent } from './shared/components/sidebar/sidebar.component'
       useFactory: (backend: XHRBackend, options: RequestOptions, router: Router ) => {
         return new AppHttpService(backend, options, router);
       },
-      deps: [XHRBackend, RequestOptions]
+      deps: [XHRBackend, RequestOptions, Router]
     }],
   bootstrap: [AppComponent]
 })
