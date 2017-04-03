@@ -1,6 +1,7 @@
 var User = require("../models/user");
 var jwt = require('jsonwebtoken'),
     log4js = require('log4js'),
+    errorService = require('../middlewares/error.service'),
     log = log4js.getLogger('login');
 const JWTCONFIG = require("../config/jwt.config"),
     APPCONSTANT = require("../config/app.constant");
@@ -13,34 +14,35 @@ exports.authenticateUser = function (req, res) {
                 errorMsg: "Request body is empty."
             });
         }
-        User.findOne(req.body, function (err, user) {
-            if (err) {
-                log.error("login controller---------", err);
-                res.json({
-                    errorMsg: APPCONSTANT.mongoErr
-                });
-            } else {
-                if (user) {
-                    var token = jwt.sign(user, JWTCONFIG.secret_key);
+        User.findOne(req.body)
+            .select('_id userName type')
+            .exec()
+            .then(function (result) {
+                if (!result) {
+                    res.json({
+                        errorMsg: 'Invalid Username or Password.'
+                    });
+                } else {
+                    var token = jwt.sign(result, JWTCONFIG.secret_key);
                     res.json({
                         success: "true",
                         user: {
-                            userName: user.userName,
+                            userName: result.userName,
                             token: token
                         }
                     });
-                } else {
-                    log.error("login controller---------", "User Not Found");
-                    res.json({
-                        errorMsg: "User Not Found"
-                    });
                 }
-            }
-        });
+            })
+            .catch(function (err) {
+                console.log(err);
+                res.json({
+                    errorMsg: APPCONSTANT.serviceErr
+                });
+            })
     } catch (e) {
-        log.error("register controller---------", e);
+        log.error("login controller---------", e);
         res.json({
             errorMsg: APPCONSTANT.serviceErr
         });
     }
-}
+};

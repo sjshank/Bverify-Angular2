@@ -27,6 +27,7 @@ exports.registerUser = function (req, res) {
                     success: "true",
                     user: {
                         userName: result.userName,
+                        type: result.type,
                         token: token
                     }
                 });

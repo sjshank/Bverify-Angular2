@@ -22,43 +22,19 @@ export class ProductRegisterService {
 
     register(product: Object): Observable<boolean> {
         return this._httpService.post(`${APIURL.productRegister}`, product)
-            .map((response: Response) => {
-                let product = response.json() && response.json().user;
-                if (product){
-                    this.product = product;
-                    return true;
-                }else{
-                    return false;
-                }            
-            })
+            .map((response: Response) => <any> response.json())
             .catch(this._bverifyUtil.handleError);
     };
 
     retrieve(id: string): Observable<boolean> {
-        return this._httpService.get(`${APIURL.retrieveProduct}id`)
-            .map((response: Response) => {
-                let product = response.json() && response.json().user;
-                if (product){
-                    this.product = product;
-                    return true;
-                }else{
-                    return false;
-                }            
-            })
+        return this._httpService.get(`${APIURL.retrieveProduct}${id}`)
+            .map((response: Response) => <any> response.json())
             .catch(this._bverifyUtil.handleError);
     };
 
     list(): Observable<boolean> {
         return this._httpService.get(`${APIURL.productList}`)
-            .map((response: Response) => {
-                let product = response.json() && response.json().user;
-                if (product){
-                    this.product = product;
-                    return true;
-                }else{
-                    return false;
-                }            
-            })
+            .map((response: Response) => <any> response.json())
             .catch(this._bverifyUtil.handleError);
     }
 

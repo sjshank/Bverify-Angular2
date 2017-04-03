@@ -22,29 +22,13 @@ export class ProductShipService {
 
     ship(product: Object): Observable<boolean> {
         return this._httpService.post(`${APIURL.productShip}`, product)
-            .map((response: Response) => {
-                let product = response.json() && response.json().user;
-                if (product){
-                    this.product = product;
-                    return true;
-                }else{
-                    return false;
-                }            
-            })
+            .map((response: Response) => <any> response.json())
             .catch(this._bverifyUtil.handleError);
     };
 
     retrieve(id: string): Observable<boolean> {
         return this._httpService.get(`${APIURL.retrieveProduct}id`)
-            .map((response: Response) => {
-                let product = response.json() && response.json().user;
-                if (product){
-                    this.product = product;
-                    return true;
-                }else{
-                    return false;
-                }            
-            })
+            .map((response: Response) => <any> response.json())
             .catch(this._bverifyUtil.handleError);
     };
 

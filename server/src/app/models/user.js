@@ -4,13 +4,20 @@ var db = require('../middlewares/db'),
 
 var userSchema = new Schema({
     id: {
-        type: Number
+        type: Number,
+        unique: true
     },
     userName: {
-        type: String
+        type: String,
+        required: [true, "Invalid Username or Password"]
     },
     password: {
-        type: String
+        type: String,
+        required: [true, "Invalid Username or Password"]
+    },
+    type: {
+        type: String,
+        required: [true, "Invalid Username or Password"]
     }
 });
 

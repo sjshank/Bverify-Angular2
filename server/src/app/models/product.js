@@ -2,41 +2,45 @@ var db = require('../middlewares/db'),
     Schema = db.Schema,
     autoIncrement = require('mongoose-auto-increment');
 
-var materialSchema = new Schema({
+var productSchema = new Schema({
     id: {
         type: Number,
         unique: true
     },
-    mName: {
+    pName: {
         type: String,
-        required: [true, "Material name is required"]
+        required: [true, "Product name is required"]
     },
-    mNumber: {
+    pNumber: {
         type: String,
         required: [true, "Model number is required"]
     },
-    productionDate: {
+    manufacturingDate: {
         type: String,
         default: Date().toString()
     },
-    mWeight: {
+    pWeight: {
         type: String,
-        required: [true, "Material weight is required"]
+        required: [true, "Product weight is required"]
     },
-    mQuantity: {
+    pQuantity: {
         type: Number,
-        required: [true, "Material quantity is required"]
+        required: [true, "Product quantity is required"]
     },
-    mFiles: []
+    pFiles: [],
+    materials: [{
+        type: Number,
+        ref: 'Material'
+    }]
 });
 
 materialSchema.plugin(autoIncrement.plugin, {
-    model: 'Material',
+    model: 'Product',
     field: 'id',
     startAt: 1,
     incrementBy: 1
 });
 
-var Material = db.model('Material', materialSchema);
+var Product = db.model('Product', productSchema);
 
-module.exports = Material;
+module.exports = Product;

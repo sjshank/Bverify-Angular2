@@ -15,10 +15,13 @@ export class RegisterMaterialComponent implements OnInit {
   subTitle: string = 'REGISTERED MATERIALS'
   rForm: FormGroup;
   private _alive = true;
-  list : any;
+  data: any[];
 
   settings = {
     columns: {
+      ID: {
+        title: 'ID'
+      },
       mName: {
         title: 'Material Name'
       },
@@ -32,8 +35,11 @@ export class RegisterMaterialComponent implements OnInit {
   };
 
 
+
   constructor(private _fb: FormBuilder, private _router: Router, private _activatedRoute: ActivatedRoute,
-    private _registerService: MaterialRegisterService) { }
+    private _registerService: MaterialRegisterService) { 
+      this._getMaterialList();
+    }
 
   ngOnInit() {
     this.rForm = this._fb.group({
@@ -41,10 +47,10 @@ export class RegisterMaterialComponent implements OnInit {
       'mNumber': ['', Validators.required],
       'productionDate': ['', Validators.required],
       'mWeight': ['', Validators.required],
-      'mColor': ['', Validators.required],
+      'mQuantity': ['', Validators.required],
       //'mFile': ['', Validators.required]
     });
-    this._getMaterialList();
+    
   };
 
   registerMaterial(value): void {
@@ -60,12 +66,12 @@ export class RegisterMaterialComponent implements OnInit {
       )
   };
 
-  private _getMaterialList(): void {
+  private _getMaterialList(): any {
     this._registerService.list()
       .takeWhile(() => this._alive)
       .subscribe(
-      data => {
-        console.log(data);
+      response => {
+        this.data = response.list;
       },
       error => {
         console.log("error", error);

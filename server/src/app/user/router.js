@@ -4,16 +4,16 @@ var router = require("../middlewares/route-init"),
     log4js = require('log4js'),
     log = log4js.getLogger('router');
 
-router.route('/user/login')
+router.route('/login')
     .post(function (req, res) {
         log.info("login route-----------");
         loginController.authenticateUser(req, res);
     });
 
-router.route('/user/register')
+router.route('/register')
     .post(function (req, res) {
         log.info("register route-----------");
         registerController.registerUser(req, res);
-    })
+    });
 
 module.exports = router;

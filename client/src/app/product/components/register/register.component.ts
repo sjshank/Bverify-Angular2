@@ -67,13 +67,12 @@ export class RegisterProductComponent implements OnInit {
       'pNumber': ['', Validators.required],
       'manufacturingDate': ['', Validators.required],
       'pWeight': ['', Validators.required],
-      'pColor': ['', Validators.required],
+      'pQuantity': ['', Validators.required],
       //'pFile': ['', Validators.required]
     });
   }
 
   registerProduct(value): void {
-    console.log(value);
     this._registerService.register(value)
       .takeWhile(() => this._alive)
       .subscribe(

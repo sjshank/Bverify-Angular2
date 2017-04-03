@@ -6,10 +6,9 @@ const express = require('express'),
 const server = require('./server')(app);
 
 var verifyToken = require("./middlewares/token");
+var route = require("./middlewares/app.route");
 
 var userRouter = require("./user/router");
-var materialRouter = require("./material/router");
-var productRouter = require("./product/router");
-var uploadRouter = require("./upload/router");
 
-app.use('/api', verifyToken, [materialRouter, productRouter, uploadRouter, userRouter]);
+app.use('/api/user', userRouter);
+app.use('/api', verifyToken, route);

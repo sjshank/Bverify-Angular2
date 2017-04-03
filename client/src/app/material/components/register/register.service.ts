@@ -22,31 +22,19 @@ export class MaterialRegisterService {
 
     register(material: Object): Observable<any> {
         return this._httpService.post(`${APIURL.materialRegister}`, material)
-            .map((response: Response) => {
-                response.json();       
-            })
+            .map((response: Response) => <any> response.json())
             .catch(this._bverifyUtil.handleError);
     };
 
     retrieve(id: string): Observable<boolean> {
-        return this._httpService.get(`${APIURL.retrieveMaterial}id`)
-            .map((response: Response) => {
-                let material = response.json() && response.json().user;
-                if (material){
-                    this.material = material;
-                    return true;
-                }else{
-                    return false;
-                }            
-            })
+        return this._httpService.get(`${APIURL.retrieveMaterial}${id}`)
+            .map((response: Response) => <any> response.json())
             .catch(this._bverifyUtil.handleError);
     };
 
     list(): Observable<any> {
         return this._httpService.get(`${APIURL.materialList}`)
-            .map((response: Response) => {
-                response.json();           
-            })
+            .map((response: Response) => <any> response.json())
             .catch(this._bverifyUtil.handleError);
     }
 

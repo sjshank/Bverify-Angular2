@@ -39,6 +39,9 @@ body .spinner {
 body .loading {
   background-color: #d35400;
 }
+body .font-bold {
+  font-weight: bold;
+}
 .app-wrapper {
   margin-left: 0px !important;
 }
