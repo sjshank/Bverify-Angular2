@@ -1,3 +1,50 @@
-<p>
-  ship works!
-</p>
+<div class="jumbotron ship-top-jumbotron">
+  <app-pageheader [header]="title"></app-pageheader>
+  <div class="row jumbotron">
+    <form novalidate [formGroup]="sForm" (submit)="shipMaterial(sForm.value)">
+      <!---->
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <div class="form-group">
+          <label>Material Name:</label>
+          <select class="form-control font-bold" formControlName="mName">
+                        <option value="">Select</option>
+                        <option *ngFor="let product of products" [value]="product.id">{{product.name}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+          <label>Model Number:</label>
+          <input class="form-control" readonly type="text">
+        </div>
+        <div class="form-group">
+          <label>Date of Production:</label>
+          <input class="form-control" readonly type="text">
+        </div>
+      </div>
+      <!---->
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <div class="form-group">
+          <label>Weight:</label>
+          <input class="form-control" readonly type="text">
+        </div>
+        <div class="form-group">
+          <label>Quantity (numbers):</label>
+          <input class="form-control" type="text" placeholder="Enter total quantity" formControlName="shipQuantity">
+        </div>
+        <div class="form-group">
+          <label>Manufacturer :</label>
+          <!--<ss-multiselect-dropdown [options]="myOptions" formControlName="optionsModel"></ss-multiselect-dropdown>-->
+          <ss-multiselect-dropdown [options]="manufactList" [settings]="ddSettings" [texts]="ddTexts" formControlName="selectedManufacturer"></ss-multiselect-dropdown>
+        </div>
+      </div>
+      <!---->
+      <div class="form-group ship-btn-div">
+        <button type="submit" class="btn btn-primary" [disabled]="!sForm.valid">Ship Material</button>
+      </div>
+    </form>
+  </div>
+</div>
+<!---->
+<!--<div class="list-div jumbotron ship-bottom-jumbotron">
+  <app-pageheader [header]="subTitle"></app-pageheader>
+  <ng2-smart-table [settings]="settings" [source]="list"></ng2-smart-table>
+</div>-->

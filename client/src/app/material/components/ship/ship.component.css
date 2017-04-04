@@ -1,0 +1,19 @@
+.ship-top-jumbotron,
+.ship-bottom-jumbotron {
+  background-image: linear-gradient(to bottom, #fff 0, #fff 100%);
+  padding-top: 0px;
+  padding-bottom: 20px !important;
+}
+.ship-top-jumbotron .row,
+.ship-bottom-jumbotron .row {
+  padding-top: 20px;
+  background-image: linear-gradient(to bottom, #3c3c3c 0, #222 100%) !important;
+  color: #fff;
+}
+.ship-top-jumbotron form .ship-btn-div,
+.ship-bottom-jumbotron form .ship-btn-div {
+  padding-left: 15px;
+}
+.ship-bottom-jumbotron {
+  padding-top: 0px !important;
+}

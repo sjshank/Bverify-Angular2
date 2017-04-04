@@ -3,6 +3,8 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
+import { MultiselectDropdownModule } from 'angular-2-dropdown-multiselect';
+import { MultiselectDropdown } from 'angular-2-dropdown-multiselect';
 
 import { PageHeaderModule } from '../shared/components/pageheader/pageheader.module';
 import { AppFileUploadModule } from '../shared/components/fileupload/fileupload.module';
@@ -31,13 +33,15 @@ import { ProductShipService } from './components/ship/ship.service';
         PageHeaderModule,
         Ng2SmartTableModule,
         RouterModule,
-        AppFileUploadModule
+        AppFileUploadModule,
+        MultiselectDropdownModule
     ],
     exports: [
         RegisterProductComponent,
         ProductProcureComponent,
         ProductShipComponent,
-        ProductShipmentComponent
+        ProductShipmentComponent,
+        MultiselectDropdown
     ],
     providers: [ProductRegisterService, ProductShipService],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]

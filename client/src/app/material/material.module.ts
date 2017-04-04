@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
+import { MultiselectDropdownModule } from 'angular-2-dropdown-multiselect';
+import { MultiselectDropdown } from 'angular-2-dropdown-multiselect';
 
 import { PageHeaderModule } from '../shared/components/pageheader/pageheader.module';
 import { AppFileUploadModule } from '../shared/components/fileupload/fileupload.module';
@@ -29,15 +31,17 @@ import { MaterialShipService } from './components/ship/ship.service';
         PageHeaderModule,
         Ng2SmartTableModule,
         AppFileUploadModule,
-        SidebarModule
+        SidebarModule,
+        MultiselectDropdownModule
     ],
     exports: [
         RegisterMaterialComponent,
         MaterialProcureComponent,
         MaterialShipComponent,
-        MaterialShipmentComponent
+        MaterialShipmentComponent,
+        MultiselectDropdown
     ],
-    providers: [MaterialRegisterService, MaterialShipService],
-    schemas: [CUSTOM_ELEMENTS_SCHEMA]
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    providers: [MaterialRegisterService, MaterialShipService]
 })
 export class MaterialModule { }

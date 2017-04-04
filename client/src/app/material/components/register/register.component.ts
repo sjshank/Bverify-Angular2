@@ -38,7 +38,7 @@ export class RegisterMaterialComponent implements OnInit {
 
   constructor(private _fb: FormBuilder, private _router: Router, private _activatedRoute: ActivatedRoute,
     private _registerService: MaterialRegisterService) { 
-      this._getMaterialList();
+      
     }
 
   ngOnInit() {
@@ -50,7 +50,7 @@ export class RegisterMaterialComponent implements OnInit {
       'mQuantity': ['', Validators.required],
       //'mFile': ['', Validators.required]
     });
-    
+    this._getMaterialList();
   };
 
   registerMaterial(value): void {

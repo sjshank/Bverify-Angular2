@@ -94,3 +94,10 @@ form .form-group {
   margin-right: 0px;
   margin-left: 0px;
 }
+.dropdown-btn {
+  width: 100% !important;
+  text-align: left !important;
+}
+ul.dropdown-menu {
+  width: 100% !important;
+}
