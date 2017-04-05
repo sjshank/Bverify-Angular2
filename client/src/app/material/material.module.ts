@@ -4,6 +4,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { MultiselectDropdownModule } from 'angular-2-dropdown-multiselect';
 import { MultiselectDropdown } from 'angular-2-dropdown-multiselect';
+import { DatepickerModule } from 'ng2-bootstrap';
+import { MyDatePickerModule } from 'mydatepicker';
 
 import { PageHeaderModule } from '../shared/components/pageheader/pageheader.module';
 import { AppFileUploadModule } from '../shared/components/fileupload/fileupload.module';
@@ -32,7 +34,9 @@ import { MaterialShipService } from './components/ship/ship.service';
         Ng2SmartTableModule,
         AppFileUploadModule,
         SidebarModule,
-        MultiselectDropdownModule
+        MultiselectDropdownModule,
+        DatepickerModule.forRoot(),
+        MyDatePickerModule
     ],
     exports: [
         RegisterMaterialComponent,

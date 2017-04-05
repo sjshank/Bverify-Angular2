@@ -8,17 +8,19 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/throw';
 
 import { BverifyUtil } from '../utils/bverify.util';
+import { UserService } from '../services/user.service';
 import { APIURL } from '../config/app.constants';
+/*import { IUser } from '../models/user';*/
 
 @Injectable()
 export class LoginService {
-    private userObject: Object = null;
+    private userObject: any;
 
-    constructor(private _http: Http, private _bverifyUtil: BverifyUtil) {
+    constructor(private _http: Http, private _bverifyUtil: BverifyUtil, private _userService: UserService) {
         // set token if saved in local storage
         let currentUser = JSON.parse(localStorage.getItem('currentUser'));
         this.userObject = currentUser && currentUser.token;
-    }
+    };
 
     loginUser(user: Object): Observable<boolean> {
         return this._http.post(`${APIURL.login}`, user)
@@ -26,6 +28,7 @@ export class LoginService {
                 let user = response.json() && response.json().user;
                 if (user){
                     this.userObject = user;
+                    this._userService.setUser(this.userObject);
                     localStorage.setItem('currentUser', JSON.stringify(user));
                     return true;
                 }else{
@@ -33,10 +36,11 @@ export class LoginService {
                 }            
             })
             .catch(this._bverifyUtil.handleError);
-    }
+    };
 
     logoutUser():void{
         this.userObject = null;
+        this._userService.setUser(null);
         localStorage.removeItem('currentUser');
-    }
+    };
 }

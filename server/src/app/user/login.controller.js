@@ -25,9 +25,10 @@ exports.authenticateUser = function (req, res) {
                 } else {
                     var token = jwt.sign(result, JWTCONFIG.secret_key);
                     res.json({
-                        success: "true",
                         user: {
                             userName: result.userName,
+                            type: result.type,
+                            isAuthenticated: true,
                             token: token
                         }
                     });

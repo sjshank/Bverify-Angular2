@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule, RequestOptions, XHRBackend } from '@angular/http';
 import { RouterModule, Router } from '@angular/router';
-import { AppHttpService } from './utils/http.service';
 
 
 import { RegisterModule } from './register/register.module';
@@ -12,16 +11,21 @@ import { MaterialModule } from './material/material.module';
 import { LandingModule } from './landing/landing.module';
 import { ProductModule } from './product/product.module';
 
+
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { LandingComponent } from './landing/landing.component';
 import { HomeComponent } from './home/home.component';
 
+
 import { AppRouter } from './config/app.routing';
 import { AppGuardService } from './config/app.guard';
 import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
 
+
+import { AppHttpService } from './utils/http.service';
+import { UserService } from './services/user.service';
 
 @NgModule({
   declarations: [
@@ -43,7 +47,7 @@ import { SidebarComponent } from './shared/components/sidebar/sidebar.component'
     LandingModule,
     ProductModule
   ],
-  providers: [AppGuardService,
+  providers: [AppGuardService, UserService,
     {
       provide: AppHttpService,
       useFactory: (backend: XHRBackend, options: RequestOptions, router: Router ) => {

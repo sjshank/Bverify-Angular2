@@ -10,10 +10,10 @@
             <ul class="nav navbar-nav navbar-right">
                 <li>
                     <a [routerLink]="['/home']" [routerLinkActive]="['is-active']">Home</a></li>
-                <li>
+                <li *ngIf="user && !user.isAuthenticated">
                     <a [routerLink]="['/register']" [routerLinkActive]="['is-active']">Register</a></li>
-                <li><a [routerLink]="['/login']" [routerLinkActive]="['is-active']">Login</a></li>
-                <li><a [routerLink]="['/logout']" [routerLinkActive]="['is-active']">Log Out</a></li>
+                <li *ngIf="user && !user.isAuthenticated"><a [routerLink]="['/login']" [routerLinkActive]="['is-active']">Login</a></li>
+                <li *ngIf="user && user.isAuthenticated"><a [routerLink]="['/logout']" [routerLinkActive]="['is-active']">Log Out</a></li>
             </ul>
         </div>
     </div>

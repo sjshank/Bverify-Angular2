@@ -11,4 +11,5 @@ var route = require("./middlewares/app.route");
 var userRouter = require("./user/router");
 
 app.use('/api/user', userRouter);
-app.use('/api', verifyToken, route);
+//app.use('/api', verifyToken, route);
+app.use('/api', route);

@@ -38,9 +38,27 @@ exports.registerMaterial = function (req, res) {
 exports.getMaterial = function (req, res) {
     log.info("getMaterial controller---------");
     try {
-        res.json({
-            sucess: true
-        });
+        Material.findOne()
+            .where('id').equals(req.params.id)
+            .select('id mName mWeight productionDate mNumber')
+            .exec()
+            .then(function (result) {
+                if (!result) {
+                    res.json({
+                        errorMsg: 'Material not found'
+                    });
+                } else {
+                    res.json({
+                        material: result
+                    });
+                }
+            })
+            .catch(function (err) {
+                log.error("getMaterial controller---------", e);
+                res.json({
+                    errorMsg: APPCONSTANT.serviceErr
+                });
+            })
     } catch (e) {
         log.error("getMaterial controller---------", e);
         res.json({
@@ -53,7 +71,7 @@ exports.getMaterialList = function (req, res) {
     log.info("getMaterialList controller---------");
     try {
         Material.find()
-        .select('id mName mWeight productionDate')
+            .select('id mName mWeight productionDate')
             .exec()
             .then(function (result) {
                 if (!result) {
@@ -75,6 +93,37 @@ exports.getMaterialList = function (req, res) {
             })
     } catch (e) {
         log.error("getMaterialList controller---------", e);
+        res.json({
+            errorMsg: APPCONSTANT.serviceErr
+        });
+    }
+};
+
+exports.deleteMaterial = function (req, res) {
+    log.info("deleteMaterial controller---------");
+    try {
+        Material.findAndRemove()
+            .where('id').equals(req.params.id)
+            .exec()
+            .then(function (result) {
+                if (!result) {
+                    res.json({
+                        errorMsg: 'Material not found'
+                    });
+                } else {
+                    res.json({
+                        result: true
+                    });
+                }
+            })
+            .catch(function (err) {
+                log.error("deleteMaterial controller---------", e);
+                res.json({
+                    errorMsg: APPCONSTANT.serviceErr
+                });
+            })
+    } catch (e) {
+        log.error("deleteMaterial controller---------", e);
         res.json({
             errorMsg: APPCONSTANT.serviceErr
         });

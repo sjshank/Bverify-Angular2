@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
+import { LocalDataSource } from 'ng2-smart-table';
+
 import { ProductRegisterService } from './register.service';
 import "rxjs/add/operator/takeWhile";
 
@@ -11,55 +13,33 @@ import "rxjs/add/operator/takeWhile";
   styleUrls: ['./register.component.less']
 })
 export class RegisterProductComponent implements OnInit {
+
   title: string = 'REGISTER NEW PROUDCT';
   subTitle: string = 'REGISTERED PRODUCTS'
   rForm: FormGroup;
+  data: LocalDataSource;
+
   private _alive = true;
 
   settings = {
     columns: {
-      id: {
-        title: 'ID'
+      pName: {
+        title: 'Product Name'
       },
-      name: {
-        title: 'Full Name'
+      pWeight: {
+        title: 'Weight'
       },
-      username: {
-        title: 'User Name'
-      },
-      email: {
-        title: 'Email'
+      manufacturingDate: {
+        title: 'Manufacturing Date'
       }
     }
   };
 
-  data = [
-    {
-      id: 1,
-      name: "Leanne Graham",
-      username: "Bret",
-      email: "Sincere@april.biz"
-    },
-    {
-      id: 2,
-      name: "Ervin Howell",
-      username: "Antonette",
-      email: "Shanna@melissa.tv"
-    },
-
-    // ... list of items
-
-    {
-      id: 11,
-      name: "Nicholas DuBuque",
-      username: "Nicholas.Stanton",
-      email: "Rey.Padberg@rosamond.biz"
-    }
-  ];
-
 
   constructor(private _fb: FormBuilder, private _router: Router, private _activatedRoute: ActivatedRoute,
-    private _registerService: ProductRegisterService) { }
+    private _registerService: ProductRegisterService) {
+    this._getProductList();
+  }
 
   ngOnInit() {
     this.rForm = this._fb.group({
@@ -78,6 +58,20 @@ export class RegisterProductComponent implements OnInit {
       .subscribe(
       data => {
         console.log(data);
+        this._getProductList();
+      },
+      error => {
+        console.log("error", error);
+      }
+      )
+  };
+
+  private _getProductList(): any {
+    this._registerService.list()
+      .takeWhile(() => this._alive)
+      .subscribe(
+      response => {
+        this.data = new LocalDataSource(response.list);
       },
       error => {
         console.log("error", error);

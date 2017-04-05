@@ -9,12 +9,14 @@ import 'rxjs/add/observable/throw';
 
 import { BverifyUtil } from '../utils/bverify.util';
 import { APIURL } from '../config/app.constants';
+import { UserService } from '../services/user.service';
+import { IUser } from '../models/user';
 
 @Injectable()
 export class RegisterService {
-    private userObject: Object = {};
+    private userObject: IUser;
 
-    constructor(private _http: Http, private _bverifyUtil: BverifyUtil) {
+    constructor(private _http: Http, private _bverifyUtil: BverifyUtil, private _userService: UserService) {
         // set token if saved in local storage
         let currentUser = JSON.parse(localStorage.getItem('currentUser'));
         this.userObject = currentUser && currentUser.token;
@@ -26,6 +28,7 @@ export class RegisterService {
                 let user = response.json() && response.json().user;
                 if (user){
                     this.userObject = user;
+                    this._userService.setUser(this.userObject);
                     localStorage.setItem('currentUser', JSON.stringify(user));
                     return true;
                 }else{

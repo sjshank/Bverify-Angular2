@@ -32,7 +32,7 @@ export class ProductRegisterService {
             .catch(this._bverifyUtil.handleError);
     };
 
-    list(): Observable<boolean> {
+    list(): Observable<any> {
         return this._httpService.get(`${APIURL.productList}`)
             .map((response: Response) => <any> response.json())
             .catch(this._bverifyUtil.handleError);

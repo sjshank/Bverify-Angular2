@@ -36,6 +36,10 @@ router.route('/material/:id')
     .get(function (req, res) {
         log.info("register route-----------");
         registerMatController.getMaterial(req, res);
+    })
+    .delete(function (req, res) {
+        log.info("register route-----------");
+        registerMatController.deleteMaterial(req, res);
     });
 
 
