@@ -7,7 +7,7 @@ const router = require("../middlewares/route-init"),
     AWSCONFIG = require('../config/aws.config');
 
 //Configure for multer file upload
-const dest = '../temp/images';
+const dest = 'temp/images';
 
 /*
 *	Configuring multer for acessing form data and file name/upload in a specific destination.
@@ -37,8 +37,8 @@ var s3 = new AWS.S3({
 });
 
 
-router.route('/upload')
-    .post(function (req, res) {
+router.route('')
+    .post(upload.single('file'), function (req, res) {
         log.info("upload route-----------");
         uploadController.uploadFile(req, res);
     });

@@ -3,10 +3,10 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { LocalDataSource } from 'ng2-smart-table';
-
-import {IMyOptions} from 'mydatepicker';
+import { IMyOptions, IMyDateModel } from 'mydatepicker';
 
 import { MaterialRegisterService } from './register.service';
+import { DATEPICKERCONST } from '../../../config/app.constants';
 import "rxjs/add/operator/takeWhile";
 
 @Component({
@@ -20,13 +20,8 @@ export class RegisterMaterialComponent implements OnInit {
   rForm: FormGroup;
   private _alive = true;
   data: LocalDataSource;
-  productionDate : Date = new Date();
-  maxDate : Date = new Date();
 
-  private myDatePickerOptions: IMyOptions = {
-        // other options...
-        dateFormat: 'dd.mm.yyyy',
-    };
+  private dpOptions: IMyOptions = DATEPICKERCONST.options;
 
   settings = {
     columns: {
@@ -46,23 +41,26 @@ export class RegisterMaterialComponent implements OnInit {
 
   constructor(private _fb: FormBuilder, private _router: Router, private _activatedRoute: ActivatedRoute,
     private _registerService: MaterialRegisterService) {
-      this._getMaterialList();
+    this._getMaterialList();
   }
 
   ngOnInit() {
     this.rForm = this._fb.group({
       'mName': ['', Validators.required],
       'mNumber': ['', Validators.required],
-      //'productionDate': ['', Validators.required],
+      'productionDate': ['', Validators.required],
       'mWeight': ['', Validators.required],
-      'mQuantity': ['', Validators.required],
+      'mQuantity': ['', Validators.required]
       //'mFile': ['', Validators.required]
     });
 
   };
 
   registerMaterial(value): void {
-    this._registerService.register(value)
+    let model = value;
+    model['productionDate'] = value['productionDate']['formatted'];
+
+    this._registerService.register(model)
       .takeWhile(() => this._alive)
       .subscribe(
       data => {
@@ -75,7 +73,7 @@ export class RegisterMaterialComponent implements OnInit {
       )
   };
 
-  
+
   private _getMaterialList(): any {
     this._registerService.list()
       .takeWhile(() => this._alive)

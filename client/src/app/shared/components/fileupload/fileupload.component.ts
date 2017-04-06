@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FileUploader } from 'ng2-file-upload';
 
+import {APIURL} from '../../../config/app.constants'
+
 @Component({
   selector: 'app-fileupload',
   templateUrl: './fileupload.component.html',
@@ -8,7 +10,7 @@ import { FileUploader } from 'ng2-file-upload';
 })
 export class FileuploadComponent implements OnInit {
 
-  uploader:FileUploader = new FileUploader({url:''});
+  uploader:FileUploader = new FileUploader({url:`${APIURL.upload}`});
   constructor() { }
 
   ngOnInit() {

@@ -9,7 +9,8 @@ var verifyToken = require("./middlewares/token");
 var route = require("./middlewares/app.route");
 
 var userRouter = require("./user/router");
+var uploadRouter = require("./upload/router");
 
 app.use('/api/user', userRouter);
-//app.use('/api', verifyToken, route);
-app.use('/api', route);
+app.use('/api/upload', uploadRouter);
+app.use('/api', verifyToken, route);

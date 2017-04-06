@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { MultiselectDropdownModule } from 'angular-2-dropdown-multiselect';
 import { MultiselectDropdown } from 'angular-2-dropdown-multiselect';
+import { MyDatePickerModule } from 'mydatepicker';
 
 import { PageHeaderModule } from '../shared/components/pageheader/pageheader.module';
 import { AppFileUploadModule } from '../shared/components/fileupload/fileupload.module';
@@ -34,7 +35,8 @@ import { ProductShipService } from './components/ship/ship.service';
         Ng2SmartTableModule,
         RouterModule,
         AppFileUploadModule,
-        MultiselectDropdownModule
+        MultiselectDropdownModule,
+        MyDatePickerModule
     ],
     exports: [
         RegisterProductComponent,

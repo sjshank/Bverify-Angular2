@@ -21,19 +21,19 @@ module.exports = function (express, app) {
         next();
     });
 
-    /*var allowCrossDomain = function (req, res, next) {
-        res.setHeader('Access-Control-Allow-Origin', '*');
+    var allowCrossDomain = function (req, res, next) {
+        res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
+        res.setHeader('Access-Control-Allow-Credentials', true);
         res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
         res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type, Authorization');
         next();
     }
 
-    app.use(allowCrossDomain);*/
-    app.use(autoReap);
+    app.use(allowCrossDomain);
+    //app.use(autoReap);
     //enable pre-flight.
-    app.options('*', cors());
     //enable all cors request.
-    app.use(cors());
+   // app.use(cors());
 
 
     if (app.get('env') === 'development') {

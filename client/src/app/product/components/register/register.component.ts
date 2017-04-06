@@ -3,8 +3,10 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { LocalDataSource } from 'ng2-smart-table';
+import { IMyOptions, IMyDateModel } from 'mydatepicker';
 
 import { ProductRegisterService } from './register.service';
+import { DATEPICKERCONST } from '../../../config/app.constants';
 import "rxjs/add/operator/takeWhile";
 
 @Component({
@@ -20,6 +22,7 @@ export class RegisterProductComponent implements OnInit {
   data: LocalDataSource;
 
   private _alive = true;
+  private dpOptions: IMyOptions = DATEPICKERCONST.options;
 
   settings = {
     columns: {
@@ -53,7 +56,10 @@ export class RegisterProductComponent implements OnInit {
   }
 
   registerProduct(value): void {
-    this._registerService.register(value)
+    let model = value;
+    model['manufacturingDate'] = value['manufacturingDate']['formatted'];
+
+    this._registerService.register(model)
       .takeWhile(() => this._alive)
       .subscribe(
       data => {

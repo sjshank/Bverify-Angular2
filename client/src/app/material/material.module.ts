@@ -10,6 +10,7 @@ import { MyDatePickerModule } from 'mydatepicker';
 import { PageHeaderModule } from '../shared/components/pageheader/pageheader.module';
 import { AppFileUploadModule } from '../shared/components/fileupload/fileupload.module';
 import { SidebarModule } from '../shared/components/sidebar/sidebar.module';
+import { AppDatePickerModule } from '../shared/components/datepicker/datepicker.module';
 
 import { RegisterMaterialComponent } from './components/register/register.component';
 import { MaterialProcureComponent } from './components/procure/procure.component';

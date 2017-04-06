@@ -34,7 +34,7 @@ var productSchema = new Schema({
     }]
 });
 
-materialSchema.plugin(autoIncrement.plugin, {
+productSchema.plugin(autoIncrement.plugin, {
     model: 'Product',
     field: 'id',
     startAt: 1,

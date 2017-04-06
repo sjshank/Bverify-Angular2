@@ -36,7 +36,7 @@ exports.getProduct = function (req, res) {
                 }
             })
             .catch(function (err) {
-                log.error("getProduct controller---------", e);
+                log.error("getProduct controller---------", err);
                 res.json({
                     errorMsg: APPCONSTANT.serviceErr
                 });
@@ -68,7 +68,7 @@ exports.getProductList = function (req, res) {
                 }
             })
             .catch(function (err) {
-                log.error("getProductList controller---------", e);
+                log.error("getProductList controller---------", err);
                 res.json({
                     errorMsg: APPCONSTANT.serviceErr
                 });
@@ -99,7 +99,7 @@ exports.deleteProduct = function (req, res) {
                 }
             })
             .catch(function (err) {
-                log.error("deleteProduct controller---------", e);
+                log.error("deleteProduct controller---------", err);
                 res.json({
                     errorMsg: APPCONSTANT.serviceErr
                 });

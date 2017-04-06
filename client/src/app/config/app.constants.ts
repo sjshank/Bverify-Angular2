@@ -1,3 +1,4 @@
+
 export const ERROR = {
     serviceError: 'Service is temporarily unavailable. Please try after sometime.'
 }
@@ -14,8 +15,9 @@ export const APIURL = {
     productRegister: 'http://localhost:4000/api/product/register',
     retrieveProduct: 'http://localhost:4000/api/product/',
     productList: 'http://localhost:4000/api/product/list',
-    productShip: 'http://localhost:4000/api/product/list'
+    productShip: 'http://localhost:4000/api/product/list',
     /*******************************************************/
+    upload: 'http://localhost:4000/api/upload'
 }
 
 export const DROPDOWNCONSTANT = {
@@ -23,5 +25,15 @@ export const DROPDOWNCONSTANT = {
         buttonClasses: 'btn btn-default btn-secondary dropdown-btn',
         dynamicTitleMaxItems: 0,
         maxHeight: '120px'
+    }
+}
+
+
+export const DATEPICKERCONST = {
+    currDate: new Date(),
+    options : {
+        dateFormat: 'dd/mm/yyyy',
+        editableDateField: false,
+        disableSince: { year: (new Date()).getFullYear(), month: (new Date()).getMonth() + 1, day: (new Date()).getDate() + 1 }
     }
 }

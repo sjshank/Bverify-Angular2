@@ -101,3 +101,13 @@ form .form-group {
 ul.dropdown-menu {
   width: 100% !important;
 }
+.mydp {
+  margin-top: -1px !important;
+  border-radius: 4px !important;
+}
+.mydp .selectiongroup .selection {
+  color: #555 !important;
+  font-size: 14px !important;
+  text-align: left;
+  padding: 6px 12px;
+}
